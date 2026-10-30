@@ -1,0 +1,2542 @@
+/* =====================================================
+   School Planner Complete Edition
+   style.css
+   Part1
+===================================================== */
+
+/* ===========================
+   Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Noto Sans JP",sans-serif;
+
+    background:#f5f7fb;
+
+    color:#333;
+
+    min-height:100vh;
+
+    line-height:1.6;
+
+    transition:.3s;
+
+}
+
+/* ===========================
+   Theme
+=========================== */
+
+:root{
+
+    --primary:#3b82f6;
+    --primary-dark:#2563eb;
+
+    --secondary:#10b981;
+
+    --danger:#ef4444;
+
+    --warning:#f59e0b;
+
+    --card:#ffffff;
+
+    --background:#f5f7fb;
+
+    --border:#dddddd;
+
+    --text:#333333;
+
+    --gray:#777777;
+
+    --shadow:0 4px 12px rgba(0,0,0,.08);
+
+    --radius:14px;
+
+}
+
+/* ===========================
+   Dark Theme
+=========================== */
+
+body.dark{
+
+    --background:#16181d;
+
+    --card:#22252c;
+
+    --border:#36393f;
+
+    --text:#eeeeee;
+
+    --gray:#bbbbbb;
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+/* ===========================
+   Layout
+=========================== */
+
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+#app{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:20px;
+
+    padding-bottom:110px;
+
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:18px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.header h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+   Page
+=========================== */
+
+.page{
+
+    display:none;
+
+    animation:fade .3s ease;
+
+}
+
+.page.active{
+
+    display:block;
+
+}
+
+/* ===========================
+   Card
+=========================== */
+
+.card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+}
+
+.card h2{
+
+    margin-bottom:16px;
+
+    color:var(--primary);
+
+}
+
+.card h3{
+
+    margin-bottom:12px;
+
+}
+
+.card h4{
+
+    margin-bottom:8px;
+
+}
+
+.gray{
+
+    color:var(--gray);
+
+}
+
+/* ===========================
+   Grid
+=========================== */
+
+.statsGrid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:16px;
+
+}
+
+/* ===========================
+   Button
+=========================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:10px;
+
+    transition:.25s;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.primaryButton{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:12px 20px;
+
+}
+
+.primaryButton:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.secondaryButton{
+
+    background:#e5e7eb;
+
+    color:#222;
+
+    padding:12px 20px;
+
+}
+
+.secondaryButton:hover{
+
+    filter:brightness(.95);
+
+}
+
+.dangerButton{
+
+    background:var(--danger);
+
+    color:white;
+
+    padding:12px 20px;
+
+}
+
+.dangerButton:hover{
+
+    opacity:.9;
+
+}
+
+.buttonGroup{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:15px;
+
+}
+
+/* ===========================
+   Input
+=========================== */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    margin-top:6px;
+
+    margin-bottom:15px;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:.2s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(59,130,246,.18);
+
+}
+
+textarea{
+
+    resize:vertical;
+
+}
+
+/* ===========================
+   Labels
+=========================== */
+
+label{
+
+    font-weight:600;
+
+    display:block;
+
+    margin-top:10px;
+
+}
+
+/* ===========================
+   Link
+=========================== */
+
+a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================================
+   Home
+===================================================== */
+
+/* ===========================
+   Greeting
+=========================== */
+
+#greeting{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+    color:var(--primary);
+
+}
+
+#todayDate{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   Home Cards
+=========================== */
+
+#todayClass,
+#todaySchedule,
+#nextSchedule{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+/* ===========================
+   Lesson Card
+=========================== */
+
+.lessonItem{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:#eef5ff;
+
+    border-left:5px solid var(--primary);
+
+    transition:.25s;
+
+}
+
+.lessonItem:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+body.dark .lessonItem{
+
+    background:#2b3240;
+
+}
+
+/* ===========================
+   Schedule Card
+=========================== */
+
+.scheduleItem{
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:#f9fafb;
+
+    border:1px solid var(--border);
+
+    transition:.25s;
+
+}
+
+.scheduleItem:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+body.dark .scheduleItem{
+
+    background:#2a2d35;
+
+}
+
+.scheduleItem strong{
+
+    display:block;
+
+    font-size:17px;
+
+    margin-bottom:5px;
+
+}
+
+.scheduleItem small{
+
+    color:var(--gray);
+
+}
+
+/* ===========================
+   Study Cards
+=========================== */
+
+.statsGrid>div{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #60a5fa
+    );
+
+    color:white;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+.statsGrid>div:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.statsGrid h4{
+
+    color:white;
+
+    margin-bottom:10px;
+
+    font-size:16px;
+
+}
+
+#studyTime,
+#streak{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   Empty Message
+=========================== */
+
+.emptyMessage{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:var(--gray);
+
+    border:2px dashed var(--border);
+
+    border-radius:12px;
+
+}
+
+/* ===========================
+   Today's Highlight
+=========================== */
+
+.todayCard{
+
+    border-left:6px solid var(--warning);
+
+}
+
+/* ===========================
+   Subject Badge
+=========================== */
+
+.subjectBadge{
+
+    display:inline-block;
+
+    padding:5px 10px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+   Time Badge
+=========================== */
+
+.timeBadge{
+
+    display:inline-block;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    background:var(--secondary);
+
+    color:white;
+
+    font-size:12px;
+
+}
+
+/* ===========================
+   Card Animation
+=========================== */
+
+.card{
+
+    animation:fade .35s ease;
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+    #greeting{
+
+        font-size:24px;
+
+    }
+
+    .statsGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .lessonItem{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .scheduleItem{
+
+        padding:12px;
+
+    }
+
+    #studyTime,
+    #streak{
+
+        font-size:24px;
+
+    }
+
+}
+
+/* =====================================================
+   Calendar
+===================================================== */
+
+/* ===========================
+   Calendar Header
+=========================== */
+
+.calendarHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.calendarHeader h2{
+
+    color:var(--primary);
+
+    font-size:24px;
+
+}
+
+.calendarHeader button{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:20px;
+
+}
+
+.calendarHeader button:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* ===========================
+   Calendar Grid
+=========================== */
+
+.calendarGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:8px;
+
+}
+
+.calendarWeek{
+
+    text-align:center;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    padding:10px 0;
+
+}
+
+/* ===========================
+   Calendar Cell
+=========================== */
+
+.calendarCell{
+
+    min-height:95px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    position:relative;
+
+}
+
+.calendarCell:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.calendarCell.empty{
+
+    background:transparent;
+
+    border:none;
+
+    cursor:default;
+
+}
+
+/* ===========================
+   Day Number
+=========================== */
+
+.dayNumber{
+
+    font-weight:bold;
+
+    font-size:16px;
+
+}
+
+/* ===========================
+   Today
+=========================== */
+
+.calendarCell.today{
+
+    border:2px solid var(--primary);
+
+    background:#eaf3ff;
+
+}
+
+body.dark .calendarCell.today{
+
+    background:#243248;
+
+}
+
+/* ===========================
+   Event Dot
+=========================== */
+
+.eventDot{
+
+    position:absolute;
+
+    right:8px;
+
+    bottom:8px;
+
+    min-width:24px;
+
+    height:24px;
+
+    padding:0 6px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--danger);
+
+    color:white;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   Schedule List
+=========================== */
+
+#scheduleList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+/* ===========================
+   Schedule Form
+=========================== */
+
+#scheduleForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#scheduleForm input,
+#scheduleForm textarea{
+
+    margin-bottom:16px;
+
+}
+
+/* ===========================
+   Calendar Animation
+=========================== */
+
+.calendarCell{
+
+    animation:fade .25s ease;
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+    .calendarGrid{
+
+        gap:5px;
+
+    }
+
+    .calendarCell{
+
+        min-height:70px;
+
+        padding:6px;
+
+    }
+
+    .dayNumber{
+
+        font-size:14px;
+
+    }
+
+    .eventDot{
+
+        width:18px;
+
+        height:18px;
+
+        font-size:10px;
+
+    }
+
+    .calendarHeader h2{
+
+        font-size:20px;
+
+    }
+
+}
+
+/* ===========================
+   Small Screen
+=========================== */
+
+@media (max-width:480px){
+
+    .calendarCell{
+
+        min-height:58px;
+
+    }
+
+    .calendarWeek{
+
+        font-size:12px;
+
+    }
+
+    .dayNumber{
+
+        font-size:13px;
+
+    }
+
+}
+
+/* =====================================================
+   Timetable
+===================================================== */
+
+/* ===========================
+   Week Timetable
+=========================== */
+
+#weekTimetable{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+/* ===========================
+   Week Card
+=========================== */
+
+.weekCard{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:18px;
+
+    transition:.25s;
+
+}
+
+.weekCard:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.weekCard h3{
+
+    text-align:center;
+
+    color:var(--primary);
+
+    margin-bottom:16px;
+
+    padding-bottom:10px;
+
+    border-bottom:2px solid var(--border);
+
+}
+
+/* ===========================
+   Lesson Item
+=========================== */
+
+.lessonItem{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    border-radius:10px;
+
+    background:#eef5ff;
+
+    transition:.2s;
+
+}
+
+.lessonItem:last-child{
+
+    margin-bottom:0;
+
+}
+
+.lessonItem:hover{
+
+    transform:translateX(4px);
+
+}
+
+body.dark .lessonItem{
+
+    background:#2b3240;
+
+}
+
+/* ===========================
+   Lesson Number
+=========================== */
+
+.lessonNumber{
+
+    min-width:55px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+}
+
+/* ===========================
+   Lesson Name
+=========================== */
+
+.lessonName{
+
+    flex:1;
+
+    margin-left:15px;
+
+    font-weight:500;
+
+}
+
+/* =====================================================
+   Timetable Editor
+===================================================== */
+
+#timetableEditor{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+/* ===========================
+   Edit Card
+=========================== */
+
+.editCard{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:18px;
+
+}
+
+.editCard h3{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+}
+
+/* ===========================
+   Lesson Edit
+=========================== */
+
+.lessonEdit{
+
+    display:grid;
+
+    grid-template-columns:70px 1fr;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:12px;
+
+}
+
+.lessonEdit:last-child{
+
+    margin-bottom:0;
+
+}
+
+.lessonEdit label{
+
+    margin:0;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
+.lessonEdit input{
+
+    margin:0;
+
+}
+
+/* ===========================
+   Save Area
+=========================== */
+
+#saveTimetableButton{
+
+    min-width:140px;
+
+}
+
+#clearTimetableButton{
+
+    min-width:140px;
+
+}
+
+/* ===========================
+   Empty Timetable
+=========================== */
+
+.timetableEmpty{
+
+    padding:25px;
+
+    text-align:center;
+
+    border:2px dashed var(--border);
+
+    border-radius:12px;
+
+    color:var(--gray);
+
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+.weekCard,
+.editCard{
+
+    animation:fade .3s ease;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:900px){
+
+    #weekTimetable{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .lessonItem{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .lessonName{
+
+        margin-left:0;
+
+    }
+
+    .lessonEdit{
+
+        grid-template-columns:60px 1fr;
+
+    }
+
+    .buttonGroup{
+
+        flex-direction:column;
+
+    }
+
+    .buttonGroup button{
+
+        width:100%;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .weekCard{
+
+        padding:15px;
+
+    }
+
+    .editCard{
+
+        padding:15px;
+
+    }
+
+    .lessonEdit{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .lessonEdit label{
+
+        text-align:left;
+
+    }
+
+}
+
+/* =====================================================
+   Statistics
+===================================================== */
+
+/* ===========================
+   Summary
+=========================== */
+
+#statsSummary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:16px;
+
+}
+
+.statsCard{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #60a5fa
+    );
+
+    color:#fff;
+
+    border-radius:var(--radius);
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.statsCard:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.statsCard h4{
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    opacity:.9;
+
+}
+
+.statsCard .value{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+/* ===========================
+   Chart
+=========================== */
+
+.chartContainer{
+
+    position:relative;
+
+    width:100%;
+
+    height:340px;
+
+}
+
+.chartContainer canvas{
+
+    width:100%!important;
+
+    height:100%!important;
+
+}
+
+/* ===========================
+   Ranking
+=========================== */
+
+#subjectRanking{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.rankItem{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    transition:.25s;
+
+}
+
+.rankItem:hover{
+
+    transform:translateX(4px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.rankItem strong{
+
+    flex:1;
+
+    margin-left:18px;
+
+}
+
+/* ===========================
+   Study Logs
+=========================== */
+
+#studyLogList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.studyLogItem{
+
+    padding:16px;
+
+    border-radius:12px;
+
+    background:var(--card);
+
+    border-left:5px solid var(--secondary);
+
+    box-shadow:var(--shadow);
+
+}
+
+.studyLogItem strong{
+
+    display:block;
+
+    font-size:16px;
+
+    margin-bottom:6px;
+
+}
+
+.studyLogItem small{
+
+    color:var(--gray);
+
+}
+
+/* =====================================================
+   Settings
+===================================================== */
+
+#settingsPage .card{
+
+    margin-bottom:22px;
+
+}
+
+#settingsPage h3{
+
+    color:var(--primary);
+
+    margin-bottom:16px;
+
+}
+
+#settingsPage .buttonGroup{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+#settingsPage button{
+
+    flex:1;
+
+    min-width:180px;
+
+}
+
+#themeButton{
+
+    width:100%;
+
+}
+
+#resetButton{
+
+    width:100%;
+
+}
+
+/* ===========================
+   Form Controls
+=========================== */
+
+select{
+
+    cursor:pointer;
+
+}
+
+input[type="date"],
+input[type="time"]{
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+   Hover
+=========================== */
+
+.card:hover{
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.12);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .chartContainer{
+
+        height:260px;
+
+    }
+
+    .rankItem{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .rankItem strong{
+
+        margin-left:0;
+
+    }
+
+    #settingsPage button{
+
+        width:100%;
+
+        min-width:100%;
+
+    }
+
+}
+
+/* =====================================================
+   Bottom Navigation
+===================================================== */
+
+.bottomNav{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    background:var(--card);
+
+    border-top:1px solid var(--border);
+
+    box-shadow:0 -2px 12px rgba(0,0,0,.08);
+
+    z-index:999;
+
+}
+
+.navButton{
+
+    flex:1;
+
+    height:100%;
+
+    border:none;
+
+    background:transparent;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:4px;
+
+    color:var(--gray);
+
+    transition:.25s;
+
+}
+
+.navButton span{
+
+    font-size:12px;
+
+}
+
+.navButton:hover{
+
+    background:rgba(59,130,246,.08);
+
+}
+
+.navButton.active{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+/* =====================================================
+   Toast
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:90px;
+
+    transform:translateX(-50%) translateY(30px);
+
+    background:#222;
+
+    color:#fff;
+
+    padding:14px 22px;
+
+    border-radius:999px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:3000;
+
+    box-shadow:var(--shadow);
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+/* =====================================================
+   Loading
+===================================================== */
+
+.loadingOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:5000;
+
+}
+
+.loadingBox{
+
+    background:var(--card);
+
+    color:var(--text);
+
+    padding:30px;
+
+    border-radius:18px;
+
+    min-width:240px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.loadingSpinner{
+
+    width:52px;
+
+    height:52px;
+
+    margin:0 auto 20px;
+
+    border:5px solid rgba(59,130,246,.2);
+
+    border-top:5px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* =====================================================
+   Scrollbar
+===================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--background);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* =====================================================
+   Utilities
+===================================================== */
+
+.hidden{
+
+    display:none!important;
+
+}
+
+.center{
+
+    text-align:center;
+
+}
+
+.textRight{
+
+    text-align:right;
+
+}
+
+.mt10{
+
+    margin-top:10px;
+
+}
+
+.mt20{
+
+    margin-top:20px;
+
+}
+
+.mb10{
+
+    margin-bottom:10px;
+
+}
+
+.mb20{
+
+    margin-bottom:20px;
+
+}
+
+/* =====================================================
+   Responsive
+===================================================== */
+
+@media(max-width:768px){
+
+    #app{
+
+        padding:16px;
+
+        padding-bottom:95px;
+
+    }
+
+    .header h1{
+
+        font-size:22px;
+
+    }
+
+    .card{
+
+        padding:16px;
+
+    }
+
+    .bottomNav{
+
+        height:64px;
+
+    }
+
+    .navButton span{
+
+        font-size:11px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    #app{
+
+        padding:12px;
+
+        padding-bottom:90px;
+
+    }
+
+    .header{
+
+        padding:14px;
+
+    }
+
+    .header h1{
+
+        font-size:20px;
+
+    }
+
+    .card{
+
+        border-radius:12px;
+
+        padding:14px;
+
+    }
+
+    button{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* =====================================================
+   Dark Mode Adjustments
+===================================================== */
+
+body.dark .toast{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+body.dark .bottomNav{
+
+    background:#22252c;
+
+}
+
+body.dark .navButton:hover{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+
+    background:#2b2f36;
+
+    color:#fff;
+
+}
+
+body.dark .loadingBox{
+
+    background:#22252c;
+
+}
+
+/* =====================================================
+   Guide / 使い方
+===================================================== */
+
+/* ===========================
+   Guide Hero
+=========================== */
+
+.guideHero{
+
+    text-align:center;
+
+    padding:26px 22px;
+
+    border-top:5px solid var(--primary);
+
+}
+
+.guideHero h2{
+
+    color:var(--primary);
+
+    font-size:26px;
+
+    margin-bottom:14px;
+
+}
+
+.guideHero p{
+
+    color:var(--text);
+
+    margin-bottom:8px;
+
+}
+
+.guideHero p:last-child{
+
+    margin-bottom:0;
+
+    color:var(--gray);
+
+}
+
+
+/* ===========================
+   Guide Section
+=========================== */
+
+.guideSection{
+
+    padding:22px;
+
+}
+
+.guideSection h3{
+
+    color:var(--primary);
+
+    margin-bottom:14px;
+
+    font-size:20px;
+
+}
+
+.guideSection > p{
+
+    color:var(--gray);
+
+    margin-bottom:18px;
+
+}
+
+
+/* ===========================
+   Guide Step
+=========================== */
+
+.guideStep{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:16px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.guideStep:first-of-type{
+
+    padding-top:4px;
+
+}
+
+.guideStep:last-child{
+
+    border-bottom:none;
+
+    padding-bottom:4px;
+
+}
+
+.guideStep > div:last-child{
+
+    flex:1;
+
+}
+
+.guideStep strong{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:16px;
+
+}
+
+.guideStep p{
+
+    margin:0;
+
+    color:var(--gray);
+
+    line-height:1.7;
+
+}
+
+
+/* ===========================
+   Guide Number
+=========================== */
+
+.guideNumber{
+
+    flex:0 0 38px;
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+
+/* ===========================
+   Guide Info
+=========================== */
+
+.guideInfo{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:14px;
+
+}
+
+.guideInfoItem{
+
+    padding:16px;
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    transition:.25s;
+
+}
+
+.guideInfoItem:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.guideInfoItem strong{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:15px;
+
+    color:var(--text);
+
+}
+
+.guideInfoItem p{
+
+    margin:0;
+
+    color:var(--gray);
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+
+/* ===========================
+   Guide Note
+=========================== */
+
+.guideNote{
+
+    margin-top:18px;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:#eef5ff;
+
+    border-left:5px solid var(--primary);
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+.guideNote.warning{
+
+    background:#fff7e6;
+
+    border-left-color:var(--warning);
+
+}
+
+
+/* ===========================
+   Guide Tip
+=========================== */
+
+.guideTip{
+
+    padding:16px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+
+}
+
+.guideTip:last-child{
+
+    margin-bottom:0;
+
+}
+
+.guideTip strong{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:var(--primary);
+
+    font-size:16px;
+
+}
+
+.guideTip p{
+
+    margin:0;
+
+    color:var(--gray);
+
+    line-height:1.7;
+
+}
+
+
+/* ===========================
+   Guide End
+=========================== */
+
+.guideEnd{
+
+    text-align:center;
+
+    border-top:4px solid var(--secondary);
+
+}
+
+.guideEnd h3{
+
+    color:var(--secondary);
+
+    margin-bottom:10px;
+
+}
+
+.guideEnd p{
+
+    color:var(--gray);
+
+    margin:0;
+
+}
+
+
+/* ===========================
+   Guide Hover
+=========================== */
+
+.guideHero,
+.guideSection,
+.guideEnd{
+
+    animation:fade .35s ease;
+
+}
+
+
+/* ===========================
+   Dark Mode
+=========================== */
+
+body.dark .guideNote{
+
+    background:#243248;
+
+}
+
+body.dark .guideNote.warning{
+
+    background:#3a3120;
+
+}
+
+body.dark .guideInfoItem,
+body.dark .guideTip{
+
+    background:#1d2026;
+
+}
+
+
+/* ===========================
+   Guide Responsive
+=========================== */
+
+@media (max-width:768px){
+
+    .guideHero{
+
+        padding:22px 16px;
+
+    }
+
+    .guideHero h2{
+
+        font-size:22px;
+
+    }
+
+    .guideSection{
+
+        padding:18px;
+
+    }
+
+    .guideInfo{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .guideStep{
+
+        gap:12px;
+
+    }
+
+    .guideNumber{
+
+        flex-basis:34px;
+
+        width:34px;
+
+        height:34px;
+
+        font-size:14px;
+
+    }
+
+}
+
+
+@media (max-width:480px){
+
+    .guideHero h2{
+
+        font-size:20px;
+
+    }
+
+    .guideSection h3{
+
+        font-size:18px;
+
+    }
+
+    .guideStep strong{
+
+        font-size:15px;
+
+    }
+
+    .guideStep p,
+    .guideInfoItem p,
+    .guideTip p{
+
+        font-size:13px;
+
+    }
+
+    .guideNote{
+
+        font-size:13px;
+
+        padding:12px 14px;
+
+    }
+
+}
+
+/* =====================================
+   Calendar Selected Date
+===================================== */
+
+.calendarCell.selected{
+
+    background:#3b82f6;
+
+    border-color:#3b82f6;
+
+    color:#ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.18);
+
+}
+
+
+.calendarCell.selected .dayNumber{
+
+    color:#ffffff;
+
+    font-weight:700;
+
+}
+
+
+/* 今日かつ選択中 */
+
+.calendarCell.today.selected{
+
+    background:#2563eb;
+
+    border-color:#2563eb;
+
+}
+
+
+/* ダークモード */
+
+body.dark .calendarCell.selected{
+
+    background:#3b82f6;
+
+    border-color:#3b82f6;
+
+    color:#ffffff;
+
+}
+
+/* =====================================================
+   End
+===================================================== */

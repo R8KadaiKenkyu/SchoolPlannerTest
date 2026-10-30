@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>School Planner</title>
+
+    
+    <!-- PWA設定 -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- スマートフォン対応 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Planner">
+
+    <!-- アプリアイコン -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="light">
+
+<!-- ==========================
+     Header
+========================== -->
+
+<header class="header">
+
+    <h1>
+
+        📚 School Planner
+
+    </h1>
+
+</header>
+
+<!-- ==========================
+     Main
+========================== -->
+
+<main id="app">
+
+<!-- ==========================
+     HOME
+========================== -->
+
+<section
+    id="homePage"
+    class="page active">
+
+    <!-- Greeting -->
+
+    <div class="card">
+
+        <h2 id="greeting">
+
+            おはようございます！
+
+        </h2>
+
+        <p id="todayDate">
+
+        </p>
+
+    </div>
+
+    <!-- Class -->
+
+    <div class="card">
+
+        <h3>
+
+            年・組
+
+        </h3>
+
+        <select id="classSelect">
+
+            <option value="1-1">1年1組</option>
+            <option value="1-2">1年2組</option>
+            <option value="1-3">1年3組</option>
+
+            <option value="2-1">2年1組</option>
+            <option value="2-2">2年2組</option>
+            <option value="2-3">2年3組</option>
+
+            <option value="3-1">3年1組</option>
+            <option value="3-2">3年2組</option>
+            <option value="3-3">3年3組</option>
+
+        </select>
+
+    </div>
+
+    <!-- Today's Timetable -->
+
+    <div class="card">
+
+        <h3>
+
+            今日の授業
+
+        </h3>
+
+        <div id="todayClass">
+
+        </div>
+
+    </div>
+
+    <!-- Today's Schedule -->
+
+    <div class="card">
+
+        <h3>
+
+            今日の予定
+
+        </h3>
+
+        <div id="todaySchedule">
+
+        </div>
+
+    </div>
+
+    <!-- Next Schedule -->
+
+    <div class="card">
+
+        <h3>
+
+            次の予定
+
+        </h3>
+
+        <div id="nextSchedule">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     CALENDAR
+========================== -->
+
+<section
+    id="calendarPage"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            📅 カレンダー
+
+        </h2>
+
+        <div id="calendar">
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+
+            予定一覧
+
+        </h3>
+
+        <div id="scheduleList">
+
+            <p class="gray">
+
+                日付を選択してください
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+
+            予定を追加
+
+        </h3>
+
+        <form id="scheduleForm">
+
+            <label>
+
+                日付
+
+            </label>
+
+            <input
+                type="date"
+                id="scheduleDate">
+
+            <label>
+
+                時間
+
+            </label>
+
+            <input
+                type="time"
+                id="scheduleTime">
+
+            <label>
+
+                タイトル
+
+            </label>
+
+            <input
+                type="text"
+                id="scheduleTitle"
+                placeholder="例：数学テスト">
+
+            <label>
+
+                メモ
+
+            </label>
+
+            <textarea
+                id="scheduleMemo"
+                rows="4"
+                placeholder="メモを入力"></textarea>
+
+            <button
+                type="submit"
+                id="addScheduleButton"
+                class="primaryButton">
+
+                予定を追加
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     TIMETABLE
+========================== -->
+
+<section
+    id="timetablePage"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            📚 時間割
+
+        </h2>
+
+        <div id="weekTimetable">
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+
+            時間割編集
+
+        </h3>
+
+        <div id="timetableEditor">
+
+        </div>
+
+        <div class="buttonGroup">
+
+            <button
+                id="saveTimetableButton"
+                class="primaryButton">
+
+                保存
+
+            </button>
+
+            <button
+                id="clearTimetableButton"
+                class="dangerButton">
+
+                全削除
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     GUIDE
+========================== -->
+
+<section
+    id="guidePage"
+    class="page">
+
+    <!-- はじめに -->
+    <div class="card guideHero">
+
+        <h2>
+            ❓ School Planner の使い方
+        </h2>
+
+        <p>
+            School Planner は、学校生活の
+            「予定」と「時間割」をまとめて管理できるアプリです。
+        </p>
+
+        <p>
+            初めて使う場合は、
+            まず「時間割」と「予定」を登録すると便利です。
+        </p>
+
+    </div>
+
+
+    <!-- 1. はじめに -->
+    <div class="card guideSection">
+
+        <h3>
+            1. はじめに
+        </h3>
+
+        <div class="guideStep">
+
+            <div class="guideNumber">
+                1
+            </div>
+
+            <div>
+                <strong>時間割を登録する</strong>
+                <p>
+                    「時間割」タブから、
+                    曜日ごとの授業を登録します。
+                </p>
+            </div>
+
+        </div>
+
+        <div class="guideStep">
+
+            <div class="guideNumber">
+                2
+            </div>
+
+            <div>
+                <strong>予定を登録する</strong>
+                <p>
+                    「予定」タブから、
+                    テスト・提出物・行事などを登録します。
+                </p>
+            </div>
+
+        </div>
+
+        <div class="guideStep">
+
+            <div class="guideNumber">
+                3
+            </div>
+
+            <div>
+                <strong>ホームで確認する</strong>
+                <p>
+                    ホームでは、
+                    今日の授業・今日の予定・次の予定を
+                    まとめて確認できます。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 2. ホーム -->
+    <div class="card guideSection">
+
+        <h3>
+            2. 🏠 ホーム
+        </h3>
+
+        <p>
+            ホームでは、今日必要な情報をまとめて確認できます。
+        </p>
+
+        <div class="guideInfo">
+
+            <div class="guideInfoItem">
+                <strong>📖 今日の授業</strong>
+                <p>
+                    今日の曜日に登録されている時間割を表示します。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>📝 今日の予定</strong>
+                <p>
+                    今日の日付に登録された予定を表示します。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>⏰ 次の予定</strong>
+                <p>
+                    これから予定されている次の予定を確認できます。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3. 予定 -->
+    <div class="card guideSection">
+
+        <h3>
+            3. 📅 予定
+        </h3>
+
+        <p>
+            カレンダーを使って学校の予定を管理できます。
+        </p>
+
+        <div class="guideInfo">
+
+            <div class="guideInfoItem">
+                <strong>📆 日付を選ぶ</strong>
+                <p>
+                    カレンダーから予定を登録したい日を選択します。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>➕ 予定を追加</strong>
+                <p>
+                    日付・時間・タイトル・メモを入力して
+                    予定を登録します。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>🗑️ 予定を削除</strong>
+                <p>
+                    不要になった予定は削除できます。
+                </p>
+            </div>
+
+        </div>
+
+        <div class="guideNote">
+            💡 テスト、提出物、学校行事、部活動などを
+            登録しておくと便利です。
+        </div>
+
+    </div>
+
+
+    <!-- 4. 時間割 -->
+    <div class="card guideSection">
+
+        <h3>
+            4. 📚 時間割
+        </h3>
+
+        <p>
+            曜日ごとの授業を登録できます。
+        </p>
+
+        <div class="guideInfo">
+
+            <div class="guideInfoItem">
+                <strong>📅 曜日を確認</strong>
+                <p>
+                    1週間分の時間割を一覧で確認できます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>✏️ 授業を編集</strong>
+                <p>
+                    各曜日の授業名を入力して変更できます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>💾 保存</strong>
+                <p>
+                    編集した時間割は「保存」ボタンで保存します。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>🗑️ 全削除</strong>
+                <p>
+                    時間割をすべて削除することもできます。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 5. 設定 -->
+    <div class="card guideSection">
+
+        <h3>
+            5. ⚙️ 設定
+        </h3>
+
+        <p>
+            アプリ全体の設定やデータ管理を行います。
+        </p>
+
+        <div class="guideInfo">
+
+            <div class="guideInfoItem">
+                <strong>🌙 テーマ</strong>
+                <p>
+                    ライトモードとダークモードを切り替えます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>💾 バックアップ</strong>
+                <p>
+                    現在のデータをバックアップできます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>📂 復元</strong>
+                <p>
+                    作成したバックアップからデータを復元できます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>📤 JSONを書き出す</strong>
+                <p>
+                    データをJSONファイルとして保存できます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>📥 JSONを読み込む</strong>
+                <p>
+                    保存したJSONデータを読み込めます。
+                </p>
+            </div>
+
+            <div class="guideInfoItem">
+                <strong>🗑️ すべてのデータを削除</strong>
+                <p>
+                    アプリのデータを初期状態に戻します。
+                </p>
+            </div>
+
+        </div>
+
+        <div class="guideNote warning">
+            ⚠️ データを削除すると元に戻せないため、
+            必要なデータは事前にバックアップしてください。
+        </div>
+
+    </div>
+
+
+    <!-- 6. 便利な使い方 -->
+    <div class="card guideSection">
+
+        <h3>
+            6. 💡 便利な使い方
+        </h3>
+
+        <div class="guideTip">
+
+            <strong>
+                朝にホームを確認する
+            </strong>
+
+            <p>
+                今日の授業と予定を確認してから
+                1日の予定を立てると便利です。
+            </p>
+
+        </div>
+
+        <div class="guideTip">
+
+            <strong>
+                テストや提出物を予定に登録する
+            </strong>
+
+            <p>
+                忘れたくない予定を登録しておくことで、
+                カレンダーからすぐ確認できます。
+            </p>
+
+        </div>
+
+        <div class="guideTip">
+
+            <strong>
+                最初に時間割を登録する
+            </strong>
+
+            <p>
+                時間割を登録しておくと、
+                ホームの「今日の授業」も活用できます。
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 最後 -->
+    <div class="card guideEnd">
+
+        <h3>
+            🎉 School Planner を使ってみよう！
+        </h3>
+
+        <p>
+            まずは「時間割」を登録し、
+            次に「予定」を追加してみましょう。
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     SETTINGS
+========================== -->
+
+<section
+    id="settingsPage"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            ⚙️ 設定
+
+        </h2>
+
+        <p>
+
+            School Planner の設定を変更できます。
+
+        </p>
+
+    </div>
+
+    <!-- テーマ -->
+
+    <div class="card">
+
+        <h3>
+
+            テーマ
+
+        </h3>
+
+        <button
+            id="themeButton"
+            class="primaryButton">
+
+            🌙 ダークモード
+
+        </button>
+
+    </div>
+
+    <!-- データ管理 -->
+
+    <div class="card">
+
+        <h3>
+
+            データ管理
+
+        </h3>
+
+        <div class="buttonGroup">
+
+            <button
+                id="backupButton"
+                class="secondaryButton">
+
+                💾 バックアップ作成
+
+            </button>
+
+            <button
+                id="restoreButton"
+                class="secondaryButton">
+
+                📂 バックアップ復元
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- エクスポート / インポート -->
+
+    <div class="card">
+
+        <h3>
+
+            エクスポート / インポート
+
+        </h3>
+
+        <div class="buttonGroup">
+
+            <button
+                id="exportButton"
+                class="primaryButton">
+
+                📤 JSONを書き出す
+
+            </button>
+
+            <button
+                id="importButton"
+                class="primaryButton">
+
+                📥 JSONを読み込む
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- 初期化 -->
+
+    <div class="card">
+
+        <h3>
+
+            初期化
+
+        </h3>
+
+        <button
+            id="resetButton"
+            class="dangerButton">
+
+            🗑️ すべてのデータを削除
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     Bottom Navigation
+========================== -->
+
+</main>
+
+<nav class="bottomNav">
+
+    <button
+        class="navButton active"
+        data-page="home">
+
+        🏠
+        <span>ホーム</span>
+
+    </button>
+
+
+    <button
+        class="navButton"
+        data-page="calendar">
+
+        📅
+        <span>予定</span>
+
+    </button>
+
+
+    <button
+        class="navButton"
+        data-page="timetable">
+
+        📚
+        <span>時間割</span>
+
+    </button>
+
+
+    <button
+        class="navButton"
+        data-page="guide">
+
+        ❓
+        <span>使い方</span>
+
+    </button>
+
+
+    <button
+        class="navButton"
+        data-page="settings">
+
+        ⚙️
+        <span>設定</span>
+
+    </button>
+
+</nav>
+
+<!-- ==========================
+     Toast
+========================== -->
+
+<div
+    id="appToast"
+    class="toast">
+
+</div>
+
+<!-- ==========================
+     Loading
+========================== -->
+
+<div
+    id="loadingOverlay"
+    class="loadingOverlay"
+    style="display:none;">
+
+    <div class="loadingBox">
+
+        <div class="loadingSpinner"></div>
+
+        <p id="loadingText">
+
+            読み込み中...
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ==========================
+     JavaScript
+========================== -->
+
+<script src="js/storage.js"></script>
+<script src="js/data.js"></script>
+<script src="js/timetable.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/home.js"></script>
+<script src="js/guide.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/memo.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then((registration) => {
+          console.log("Service Worker 登録成功:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker 登録失敗:", error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
